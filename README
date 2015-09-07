@@ -19,11 +19,11 @@ if you use ubuntu linux, you can install all packages with following command.
 
 sudo apt-get install texlive imagemagick gnuplot dia inkscape
 
-2. get sources here <link>
+2. get sources here
 mkdir /tmp/bplan
 cd /tmp/bplan
-wget <link>
-tar xvf <link>
+wget https://github.com/ozkolonur/Latex-based-business-plan-template/archive/master.zip
+tar xvf https://github.com/ozkolonur/Latex-based-business-plan-template/archive/master.zip
 
 3. use build.sh to build it.
 ./build.sh

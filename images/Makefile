@@ -6,7 +6,12 @@ BMP := $(wildcard *.bmp)
 SVG := $(wildcard *.svg)
 EPS := $(JPG:.jpg=.eps) $(GIF:.gif=.eps) $(PNG:.png=.eps) $(BMP:.bmp=.eps) $(SVG:.svg=.eps)
 
-all: $(EPS) Makefile
+all: prepare cp
+
+prepare:
+	mkdir -p $(TARGET)
+
+cp: $(EPS) Makefile
 	cp *.eps $(TARGET)
 
 %.eps: %.svg

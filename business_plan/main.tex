@@ -1,8 +1,29 @@
 \documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%Start Customisation%%%%%%%%%%%%%%%%%%%%%%%%%
+% Specify which document style/target is compiled.
+\usepackage{ifthen}
+% Determine whether it is local compilation or overleaf compilation
+\makeatletter
+\begingroup\endlinechar=-1\relax
+       \everyeof{\noexpand}%
+       \edef\x{\endgroup\def\noexpand\homepath{%
+         \@@input|"kpsewhich --var-value=HOME" }}\x
+\makeatother
+\def\overleafhome{/tmp}% change as appropriate
+\ifx\homepath\overleafhome
+  % Overleaf compilation.
+  \def\pathprepend{}% Overleaf automatically looks into /latex.
+\else
+  % Local compilation
+  \def\pathprepend{business_plan/}% Local compilation looks from root dir.
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%End Customisation%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage[margin=1in, paperwidth=8.3in, paperheight=11.7in]{geometry}
 \usepackage{graphicx, array}
 \usepackage{hyperref, bookmark}
-\usepackage{packages/fancyhdr}
+\usepackage{\pathprepend /packages/fancyhdr}
 \usepackage{pdflscape}
 \hypersetup{
     bookmarks=true,         % show bookmarks bar?
@@ -25,14 +46,18 @@
     urlcolor=cyan           % color of external links
 }
 
+
+
 \pdfpagewidth 8.5in
 \pdfpageheight 11in
 
 \pagestyle{fancy}
 \headheight 35pt
 
-\rhead{\includegraphics{images/letterhead_right_en.eps}}
-\lhead{\includegraphics{images/letterhead_left.eps}}
+
+
+\rhead{\includegraphics{\pathprepend images/letterhead_right_en.eps}}
+\lhead{\includegraphics{\pathprepend images/letterhead_left.eps}}
 \rfoot{Draft}
 \cfoot{\thepage}
 \lfoot{This document is signed}
@@ -44,8 +69,8 @@
 \newline
 \newline
 \normalsize
-This document is a template. It is built from scratch using Latex 
-markup language and other Free Software Tools including Dia, gnuplot, Gimp, 
+This document is a template. It is built from scratch using Latex
+markup language and other Free Software Tools including Dia, gnuplot, Gimp,
 Inkscape, imagemagick, Openoffice.\newline
 It also tries to give clue of what a business plan is, and its sections\newline
 \end{center}
@@ -64,24 +89,24 @@ It also tries to give clue of what a business plan is, and its sections\newline
 
 \section{The Business Idea}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
-tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
+tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum
 ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur 
-ridiculus mus. Integer dignissim interdum sem sit amet mattis. 
-Aliquam aliquam neque nec elit commodo lacinia. Nunc ut pretium lectus. 
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+ridiculous mus. Integer dignissim interdum sem sit amet mattis.
+Aliquam aliquam neque nec elit commodo lacinia. Nunc ut pretium lectus.
 Pellentesque dignissim justo nec mauris suscipit lobortis.\newline
 
 
 \subsection{Mission}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
 non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
 \newline
 
 \subsection{Objectives}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
 non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
 \newline
 \begin{itemize}
@@ -91,7 +116,7 @@ non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
 \end{itemize}
 
 \subsection{Keys to success}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
 non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
 \newline
 \begin{itemize}
@@ -101,13 +126,13 @@ non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
 \end{itemize}
 
 \section{Company Summary}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 
 \subsection{What has been done already?}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
 non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
 \newline
 \begin{itemize}
@@ -118,7 +143,7 @@ non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
 \end{itemize}
 
 \subsection{What is next?}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
 non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
 \newline
 \begin{itemize}
@@ -126,9 +151,9 @@ non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
 \item item 2
 \item item 3
 \end{itemize}
- 
-\subsection{Recources required}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
+
+\subsection{Resources required}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
 non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
 \newline
 \begin{itemize}
@@ -138,9 +163,9 @@ non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
 \end{itemize}
 
 \subsection{Personnel requirements}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \begin{itemize}
 \item item 1
@@ -156,41 +181,41 @@ List of owners and their shares.
 
 \section{Products, Deliverables}
 \subsection{Product A}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 
 \subsubsection{Advantages}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 
 \subsubsection{Competitive Comparison}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
-\hyperlink{competition_and_buying_patterns}{Buying Patters Section}.\newline\newline
+\hyperlink{competition_and_buying_patterns}{Buying Patterns Section}.\newline\newline
 
 \begin{tabular}{| m{92 pt} | m{92 pt} | m{92 pt} | m{92 pt} |}\hline
-	\includegraphics[scale=0.40]{images/eps/prod_bpm1.eps} & 
-		\includegraphics[scale=0.40]{images/eps/prod_bpm2.eps} & 
-		\includegraphics[scale=0.40]{images/eps/prod_bpm3.eps} & 
-		\includegraphics[scale=0.40]{images/eps/prod_bpm4.eps} \\ \hline
+	\includegraphics[scale=0.40]{\pathprepend images/prod_bpm1.jpg} &
+		\includegraphics[scale=0.40]{\pathprepend images/prod_bpm2.jpg} &
+		\includegraphics[scale=0.40]{\pathprepend images/prod_bpm3.jpg} &
+		\includegraphics[scale=0.40]{\pathprepend images/prod_bpm4.jpg} \\ \hline
 	Competitor A & Competitor B & Competitor C & Our Product\\ \hline
-	\begin{itemize} \tiny \item Item 1 \end{itemize} & 
-					\begin{itemize} \tiny 
+	\begin{itemize} \tiny \item Item 1 \end{itemize} &
+					\begin{itemize} \tiny
 							\item Item 1
 							\item Item 2
 							\item Item 3
 							\item Item 4
-							\item Item 5\end{itemize} & 
-					\begin{itemize} \tiny 
+							\item Item 5\end{itemize} &
+					\begin{itemize} \tiny
 							\item Item 1
-							\item Item 2\end{itemize}& 
-					\begin{itemize} \tiny 
+							\item Item 2\end{itemize}&
+					\begin{itemize} \tiny
 							\item Item 1
 							\item Item 2
 							\item Item 3 \end{itemize} \\
@@ -199,13 +224,13 @@ tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \end{tabular}
 
 \subsubsection{Cost \& Margin Analysis}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \begin{tabular}{ | l | l | l | }\hline
   & ODM A & ODM B \\ \hline
-  & \includegraphics[scale=0.40]{images/eps/prod_bpm4.eps} 
+  & \includegraphics[scale=0.40]{\pathprepend images/prod_bpm4.jpg}
 	&  \\ \hline
   F.O.B Price & \$138,00 &  \\ \hline
   V.A.T & \$5,76 &  \\ \hline
@@ -221,47 +246,47 @@ tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 
 
 \subsection{Product B}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsubsection{Advantages}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsubsection{Competitive Comparison}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
-\hyperlink{competition_and_buying_patterns}{Buying Patters Section}.\newline\newline
+\hyperlink{competition_and_buying_patterns}{Buying Patterns Section}.\newline\newline
 \begin{tabular}{| m{80 pt} | m{80 pt} | m{80 pt} | m{80 pt} | m{80 pt} |}\hline
-	\includegraphics[scale=0.40]{images/eps/prod_bs1.eps} & 
-		\includegraphics[scale=0.40]{images/eps/prod_bs2.eps} & 
-		\includegraphics[scale=0.40]{images/eps/prod_bs3.eps} & 
-		\includegraphics[scale=0.40]{images/eps/prod_bs4.eps} & 
-		\includegraphics[scale=0.40]{images/eps/prod_bs5.eps} \\ \hline
+	\includegraphics[scale=0.40]{\pathprepend images/prod_bs1.jpg} &
+		\includegraphics[scale=0.40]{\pathprepend images/prod_bs2.jpg} &
+		\includegraphics[scale=0.40]{\pathprepend images/prod_bs3.jpg} &
+		\includegraphics[scale=0.40]{\pathprepend images/prod_bs4.jpg} &
+		\includegraphics[scale=0.40]{\pathprepend images/prod_bs5.jpg} \\ \hline
 	Competitor A & Comp. B & Comp. C & Comp. D & Our Product\\ \hline
-	\begin{itemize} \tiny \item  item 0\end{itemize} & 
-					\begin{itemize} \tiny 
-							\item Item 1 
+	\begin{itemize} \tiny \item  item 0\end{itemize} &
+					\begin{itemize} \tiny
+							\item Item 1
 							\item Item 2
 							\item Item 3
-							\end{itemize} & 
-					\begin{itemize} \tiny 
+							\end{itemize} &
+					\begin{itemize} \tiny
 							\item Item 1
 							\item Item 2
-							\item Item 3 \end{itemize}& 
-					\begin{itemize} \tiny 
+							\item Item 3 \end{itemize}&
+					\begin{itemize} \tiny
 							\item Item 1
 							\item Item 2
-							\end{itemize}& 
-					\begin{itemize} \tiny 
+							\end{itemize}&
+					\begin{itemize} \tiny
 							\item Item 1
 							\item Item 2
 							\end{itemize} \\
@@ -270,14 +295,14 @@ tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \end{tabular}
 
 \subsubsection{Cost \& Margin Analysis}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \begin{tabular}{ | l | l | l | }\hline
   & ODM A & ODM B \\ \hline
-  & \includegraphics[scale=0.40]{images/eps/prod_bpm4.eps} & 
-		\includegraphics[scale=0.40]{images/eps/prod_bpm4.eps} \\ \hline
+  & \includegraphics[scale=0.40]{\pathprepend images/prod_bpm4.jpg} &
+		\includegraphics[scale=0.40]{\pathprepend images/prod_bpm4.jpg} \\ \hline
   F.O.B Price & \$138,00 &  \\ \hline
   V.A.T & \$5,76 &  \\ \hline
   Logistic Expenses & \$3,00 & \\ \hline
@@ -291,37 +316,37 @@ tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \pagebreak
 
 \subsection{Product C}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsubsection{Advantages}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsubsection{Competitive Comparison}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \begin{tabular}{| m{92 pt} | m{92 pt} | m{92 pt} | m{92 pt} |}\hline
-	\includegraphics[scale=0.30]{images/eps/prod_bpm1.eps} & 
-		\includegraphics[scale=0.30]{images/eps/prod_bpm2.eps} & 
-		\includegraphics[scale=0.25]{images/eps/prod_bpm3.eps} & 
-		\includegraphics[scale=0.20]{images/eps/prod_bpm4.eps} \\ \hline
+	\includegraphics[scale=0.30]{\pathprepend images/prod_bpm1.jpg} &
+		\includegraphics[scale=0.30]{\pathprepend images/prod_bpm2.jpg} &
+		\includegraphics[scale=0.25]{\pathprepend images/prod_bpm3.jpg} &
+		\includegraphics[scale=0.20]{\pathprepend images/prod_bpm4.jpg} \\ \hline
 	Competitor A & Comp B & Comp C & Our Product A\\ \hline
-	\begin{itemize} \tiny \item  item 0 \end{itemize} & 
-					\begin{itemize} \tiny 
+	\begin{itemize} \tiny \item  item 0 \end{itemize} &
+					\begin{itemize} \tiny
 							\item Item 1
 							\item Item 2
 							\item Item 3
-							\item Item 4\end{itemize} & 
-					\begin{itemize} \tiny 
+							\item Item 4\end{itemize} &
+					\begin{itemize} \tiny
 							\item Item 1
 							\item Item 2
-							\item Item 3\end{itemize}& 
-					\begin{itemize} \tiny 
+							\item Item 3\end{itemize}&
+					\begin{itemize} \tiny
 							\item Item 1
 							\item Item 2
 							\item Item 3 \end{itemize} \\
@@ -330,13 +355,13 @@ tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \end{tabular}
 
 \subsubsection{Cost \& Margin Analysis}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \begin{tabular}{ | l | l | l | }\hline
   & ODM A & ODM B \\ \hline
-  & \includegraphics[scale=0.40]{images/eps/prod_bpm4.eps} & \includegraphics[scale=0.40]{images/eps/prod_bpm4.eps} \\ \hline
+  & \includegraphics[scale=0.40]{\pathprepend images/prod_bpm4.jpg} & \includegraphics[scale=0.40]{\pathprepend images/prod_bpm4.jpg} \\ \hline
   F.O.B Price & \$148,00 &  \\ \hline
   V.A.T & \$5,76 & 6 \\ \hline
   Logistic Expenses & \$23,00 &  \\ \hline
@@ -350,28 +375,28 @@ tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \pagebreak
 
 \subsection{Mobile Phone Application}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \hyperlink{market_share}{Market Shares}
- 
+
 \subsubsection{Development costs}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 
 \subsubsection{Release dates}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 
 \subsection{Our value-add technologies}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \begin{itemize}
 \item Item 1
@@ -385,46 +410,46 @@ tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 Put patent proposals here\newline
 
 \subsection{Sourcing}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Technology}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Future Products}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \pagebreak
 
 \section{Market Analysis}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \textbf{Global Market}\newline
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \textbf{Domestic Market}\newline
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Market Segmentation}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Industry Analysis}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \hypertarget{competition_and_buying_patterns}{}
 \subsection{Competition and Buying Patterns}
@@ -437,9 +462,9 @@ tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \item Item 4
 \item Item 5
 \end{itemize}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsubsection{Bathroom Scale}
 \begin{itemize}
@@ -459,148 +484,148 @@ lorem ipsum dolor
 \item Item 5
 \end{itemize}
 \subsection{Main competitors}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 Braun, Medisana, Beurer, Sinbo(like) are other players in these field.
-\subsection{Distrubution Patterns}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+\subsection{Distribution Patterns}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \pagebreak
 
 \section{Strategy and implementation}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Marketing Strategy}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Promotion  Strategy}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Pricing Strategy}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Sales Strategy}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Sales Forecast}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \pagebreak
 
 \section{Management Summary}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Organizational Structure}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \hyperlink{ref_org_chart}{Click here to see organization chart}.
 \subsection{Management Team}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Personnel}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Gaps}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \pagebreak
 
 \section{Financial Plan}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Important Assumptions}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Key financial indicators}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Break-even Analysis}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Projected Profit and Loss}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Projected Cash Flow}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Projected Balance Sheet}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \subsection{Projected Ratios}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 \pagebreak
 
 \section{Appendix}
 put team CVs here\newline
-\subsection{Global Market Size - Home Healthcare Equipments}
+\subsection{Global Market Size - Home Healthcare Equipment}
 \begin{center}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 \newline
 \end{center}
 \hypertarget{ref_org_chart}{}
 \subsection{Technology Patent A}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
-\subsection{Technology Patent B} 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit 
-non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum 
-et quis sem. Morbi tincidunt condimentum varius. Pellentesque habitant morbi 
+\subsection{Technology Patent B}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae velit
+non quam ullamcorper volutpat. Morbi eget turpis non justo sodales interdum
+et quis sem. Morbi tincidunt condimentum various. Pellentesque hinhabitant morbi
 tristique senectus et netus et malesuada fames ac turpis egestas.\newline
 
 \subsection{Organizational Chart}
 \begin{center}
-\includegraphics[scale=0.5]{diagrams/org_chart.eps}
+\includegraphics[scale=0.5]{\pathprepend diagrams/org_chart.eps}
 \end{center}
 \subsection{Graph 1}
 lorem ipsum dolor
-\includegraphics{graphs/immigration.eps}
+\includegraphics{\pathprepend graphs/immigration.eps}
 \newpage
 \thispagestyle{empty}
 \begin{landscape}
@@ -808,4 +833,3 @@ Here is the notes section\newline
 \hypertarget{market_share}{here}\newline
 \href{http://http://sayarbilgi.net/mobil-aygitlar/7-mobil-aygit-haberleri/88-turkiyenin-en-cok-satan-cep-telefonlari.html}{1. An Article about Turkey's mobile phone market share}
 \end{document}
-

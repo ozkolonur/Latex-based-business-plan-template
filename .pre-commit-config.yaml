@@ -1,0 +1,107 @@
+# This file specifies which checks are performed by the pre-commit service.
+# The pre-commit service prevents people from pushing code to git that is not
+# up to standards. # The reason mirrors are used instead of the actual
+# repositories for e.g. black and flake8, is because those repositories also
+# need to contain a pre-commit hook file, which they often don't by default.
+# So to resolve that, a mirror is created that includes such a file.
+
+
+# Tests if there are spelling errors in the code.
+repos:
+ - repo: https://github.com/codespell-project/codespell
+   rev: v2.2.6
+   hooks:
+    - id: codespell
+      args:
+        - --ignore-words-list=acn,alph,commun,ist,mater,ser
+        - --skip=codespell_ignore.txt,*/latex/wordlists/acronyms.tex,*/vacancy/*,*2023-06-08-triodos*
+
+# Runs additional tests that are created by the pre-commit software itself.
+ - repo: https://github.com/pre-commit/pre-commit-hooks
+   rev: v4.5.0
+   hooks:
+    # Check user did not add large files.
+    - id: check-added-large-files
+    # Checks if there are filenames that would conflict if case is changed.
+    - id: check-case-conflict
+    # Checks if any `.sh` files have a shebang like #!/bin/bash
+    - id: check-executables-have-shebangs
+    # Checks if there are any existing merge conflicts caused by the commit.
+    - id: check-merge-conflict
+    # Checks for symlinks which do not point to anything.
+    - id: check-symlinks
+    # Checks if xml files are formatted correctly.
+    - id: check-xml
+    # Checks if .yml files are valid.
+    - id: check-yaml
+    # Detects symlinks changed to regular files with content path symlink was pointing to.
+    - id: destroyed-symlinks
+    # Checks if you don't accidentally push a private key.
+    - id: detect-private-key
+    # Makes sure files end in a newline and only a newline.
+    - id: end-of-file-fixer
+    # Removes UTF-8 byte order marker.
+    - id: fix-byte-order-marker
+    # Checks if there are different line endings, like \n and crlf.
+    - id: mixed-line-ending
+    # Ensures JSON files are properly formatted.
+    - id: pretty-format-json
+      args: ['--autofix']
+    # Sorts simple YAML files which consist only of top-level keys.
+    - id: sort-simple-yaml
+    # Removes trailing whitespaces at end of lines of .. files.
+    - id: trailing-whitespace
+
+# Enforces formatting style in Markdown (.md) files.
+ - repo: https://github.com/executablebooks/mdformat
+   rev: 0.7.17
+   hooks:
+   - id: mdformat
+     #args: ["-r ~MD013"]
+     additional_dependencies:
+     - mdformat-toc
+     - mdformat-gfm
+     - mdformat-black
+
+ - repo: https://github.com/igorshubovych/markdownlint-cli
+   rev: v0.37.0
+   hooks:
+     - id: markdownlint
+       args: ["--fix"]
+
+ - repo: https://github.com/shellcheck-py/shellcheck-py
+   rev: v0.9.0.6
+   hooks:
+     - id: shellcheck
+       name: check shell scripts with shellcheck
+       args: ["-x"]
+       files: ^.*\.(sh|bash|ksh)$
+       types: []
+
+ - repo: https://github.com/syntaqx/git-hooks
+   rev: v0.0.18
+   hooks:
+    - id: shfmt
+    # Note, the -w argument automatically applies the formatting improvements.
+    # Run the listed commands manually with "-d" to show the differences.
+      args: ["-l", "-i", "2", "-ci", "-w"]
+
+# Apply latex compliance checks.
+ - repo: https://github.com/jonasbb/pre-commit-latex-hooks
+   rev: v1.4.3
+   hooks:
+    - id: american-eg-ie
+    #- id: cleveref-capitalization
+    - id: consistent-spelling
+      args:
+        [
+        #"--emph=et al.",
+        "--emph=a priori",
+        "--emph=a posteriori",
+        '--regex=naive=\bna(i|\\"i)ve',
+        ]
+    #- id: csquotes
+    - id: ensure-labels-for-sections
+    - id: no-space-in-cite
+    - id: tilde-cite
+    # - id: unique-labels

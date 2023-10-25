@@ -1,5 +1,5 @@
 % Extra marks for latex. Version 2.0.
-% Piet van Oostrum, 
+% Piet van Oostrum,
 % Dept of Computer and Information Sciences, University of Utrecht,
 % Padualaan 14, P.O. Box 80.089, 3508 TB Utrecht, The Netherlands
 % Telephone: +31 30 2532180. Email: piet@cs.uu.nl
@@ -17,7 +17,7 @@
 % March 12, 2002
 % version 2.0beta
 % Adapted for the new implementation of marks in LaTeX to solve bug
-% latex/3203. 
+% latex/3203.
 % Added symmetric commands \firstrightmark, \lastleftmark, \firstleftxmark,
 % \firstrightxmark, \lastrightxmark, \lastleftxmark, \topleftxmark and
 % \toprightxmark.
@@ -25,10 +25,10 @@
 % version 2.0
 % Release.
 
-% This package gives you two additional marks. 
-% \extramarks{m1}{m2} define two extra marks for headers/footers 
-% (especially for use with fancyheadings), which can be retrieved 
-% by \firstxmark and \lastxmark resp. Usually m1 is what would 
+% This package gives you two additional marks.
+% \extramarks{m1}{m2} define two extra marks for headers/footers
+% (especially for use with fancyheadings), which can be retrieved
+% by \firstxmark and \lastxmark resp. Usually m1 is what would
 % appear at the top of the page, m2 at the bottom of the page.
 % Typical usage:
 % \pagestyle{fancy}
@@ -36,11 +36,11 @@
 % \rfoot{\lastxmark}
 %
 % \extramarks{}{Continued on next page...}
-% text text text text text text text text text text text text text text text 
-% text text text text text text text text text text text text text text text 
-% text text text text text text text text text text text text text text text 
-% text text text text text text text text text text text text text text text 
-% text text text text text text text text text text text text text text text 
+% text text text text text text text text text text text text text text text
+% text text text text text text text text text text text text text text text
+% text text text text text text text text text text text text text text text
+% text text text text text text text text text text text text text text text
+% text text text text text text text text text text text text text text text
 % \extramarks{Continued}{}
 % \extramarks{}{}
 
@@ -53,10 +53,10 @@
 % Similarly there are now \firstleftxmark \firstrightxmark \lastrightxmark
 % \lastleftxmark. Here first and last apply to the position on the page,
 % left and right select the m1 and m2 values, respectively.
- 
+
 % Note: there is an extra command \topxmark, but this doesn't work properly
 % if marginpars or floats are used, as LaTeX clobbers TeX's topmark in this
-% case. 
+% case.
 
 \newtoks\@temptokenb
 
@@ -98,7 +98,7 @@
 \def\@markright#1#2#3#4#5{\@temptokena {#1}\@temptokenb {{#3}{#4}}%
   \unrestored@protected@xdef\@themark{{\the\@temptokena}{#5}\the\@temptokenb}}
 
-\def\@leftmark#1#2#3#4{#1} 
+\def\@leftmark#1#2#3#4{#1}
 \def\@rightmark#1#2#3#4{#2}
 
 \def\leftmark{\expandafter\@leftmark

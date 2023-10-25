@@ -1,0 +1,15 @@
+
+# Ignore latex compilation artifacts.
+*/output/*
+
+# *.sty
+# *.cls
+# *.clo
+*.aux
+*.log
+*.pdf
+
+# Do not ignore files with these extensions:
+!**.sh
+!**.tex
+!**.yaml

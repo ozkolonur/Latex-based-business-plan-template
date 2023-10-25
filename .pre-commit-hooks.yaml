@@ -1,0 +1,10 @@
+---
+# This file tells https://pre-commit.com/
+# which hooks are provided by this repo
+# for use by other git repos.
+
+- id: shfmt
+  name: Check shell style with shfmt
+  language: script
+  entry: pre_commit_hooks/shfmt
+  types: [shell]
